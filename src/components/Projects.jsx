@@ -147,7 +147,7 @@ function Projects({ handleSwitch }) {
               onHoverStart={() => setHoveredProject(project.id)}
               onHoverEnd={() => setHoveredProject(null)}
               className="group relative cursor-pointer"
-              onClick={() => project.id === 'todolist' && handleSwitch('todolist')}
+              onClick={() => project.status === 'Live' && handleSwitch(project.id)}
             >
               {/* Glassmorphism Card */}
               <div className="relative h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
@@ -199,6 +199,13 @@ function Projects({ handleSwitch }) {
                     </div>
                     
                     {project.id === 'todolist' && (
+                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Play size={16} className="text-white/70" />
+                        <span className="text-sm text-white/70">Launch</span>
+                      </div>
+                    )}
+                    
+                    {project.id === 'portfolio-site' && (
                       <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Play size={16} className="text-white/70" />
                         <span className="text-sm text-white/70">Launch</span>

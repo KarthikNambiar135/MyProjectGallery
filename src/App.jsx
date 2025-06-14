@@ -15,6 +15,9 @@ function App() {
     setTransitioning(true)
 
     setTimeout(() => {
+      if (page === "portfolio-site") {
+      window.open("https://kode-with-k.vercel.app/", "_blank");
+      return}
       setCurrentPage(page)
     }, 1500)
 

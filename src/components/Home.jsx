@@ -168,7 +168,7 @@ function Home() {
             </motion.button>
           </motion.div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -186,7 +186,7 @@ function Home() {
                 className="w-1 h-3 bg-white/50 rounded-full mt-2"
               />
             </motion.div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
