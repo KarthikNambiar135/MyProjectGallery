@@ -34,7 +34,7 @@ function Projects({ handleSwitch }) {
       tech: ['React', 'API Integration', 'Geolocation'],
       color: 'from-blue-500 to-cyan-500',
       icon: '🌤️',
-      status: 'Coming Soon',
+      status: 'Live',
       category: 'Utility'
     },
     {
@@ -198,14 +198,7 @@ function Projects({ handleSwitch }) {
                       <span className="text-sm text-white/60">{project.status}</span>
                     </div>
                     
-                    {project.id === 'todolist' && (
-                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Play size={16} className="text-white/70" />
-                        <span className="text-sm text-white/70">Launch</span>
-                      </div>
-                    )}
-                    
-                    {project.id === 'portfolio-site' && (
+                    {project.status === 'Live' && (
                       <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Play size={16} className="text-white/70" />
                         <span className="text-sm text-white/70">Launch</span>

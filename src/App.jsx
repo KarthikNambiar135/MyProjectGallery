@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Projects from './components/Projects'
 import ToDoList from './components/ToDoList'
 import NavBar from './components/NavBar.jsx';
+import Weather from './components/Weather'
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home")
@@ -31,6 +32,7 @@ function App() {
   }
 
   const renderPage = () => {
+    if (currentPage === "weather-app") return <Weather onBack={handleBack} />;
     if (currentPage === "todolist") return <ToDoList onBack={handleBack} />;
     if (currentPage === "home") return (
       <>
