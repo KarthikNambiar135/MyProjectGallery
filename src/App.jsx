@@ -5,6 +5,7 @@ import Projects from './components/Projects'
 import ToDoList from './components/ToDoList'
 import NavBar from './components/NavBar.jsx';
 import Weather from './components/Weather'
+import MiniCodeEditor from './components/MiniCodeEditor.jsx'
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home")
@@ -34,6 +35,7 @@ function App() {
   const renderPage = () => {
     if (currentPage === "weather-app") return <Weather onBack={handleBack} />;
     if (currentPage === "todolist") return <ToDoList onBack={handleBack} />;
+    if (currentPage === "code-editor") return <MiniCodeEditor onBack={handleBack} />;
     if (currentPage === "home") return (
       <>
         <NavBar />

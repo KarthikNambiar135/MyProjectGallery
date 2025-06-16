@@ -64,7 +64,7 @@ function Projects({ handleSwitch }) {
       tech: ['Monaco Editor', 'React', 'Syntax'],
       color: 'from-indigo-500 to-purple-500',
       icon: '💻',
-      status: 'Planning',
+      status: 'Live',
       category: 'Development'
     },
     {
