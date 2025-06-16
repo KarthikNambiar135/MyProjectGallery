@@ -92,7 +92,7 @@ function Projects({ handleSwitch }) {
   return (
     <div 
       id="projects" 
-      className="min-h-screen relative overflow-hidden py-20"
+      className="min-h-screen relative overflow-hidden py-12 sm:py-16 md:py-20"
       style={{
         background: `
           linear-gradient(135deg, 
@@ -106,11 +106,11 @@ function Projects({ handleSwitch }) {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl" />
+        <div className="absolute top-40 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -118,7 +118,7 @@ function Projects({ handleSwitch }) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 inline-block">
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 inline-block">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -126,17 +126,17 @@ function Projects({ handleSwitch }) {
             >
               <Folder size={48} className="text-white mx-auto mb-4" />
             </motion.div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
               Featured Projects
             </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto px-4 sm:px-0">
               A collection of carefully crafted applications showcasing modern web technologies
             </p>
           </div>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -150,7 +150,7 @@ function Projects({ handleSwitch }) {
               onClick={() => project.status === 'Live' && handleSwitch(project.id)}
             >
               {/* Glassmorphism Card */}
-              <div className="relative h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
+              <div className="relative h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                 
@@ -167,7 +167,7 @@ function Projects({ handleSwitch }) {
                 {/* Project Info */}
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
                       {project.title}
                     </h3>
                     <span className="text-xs text-white/50 bg-white/10 px-2 py-1 rounded-full">

@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}

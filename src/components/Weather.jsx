@@ -110,11 +110,12 @@ const WeatherDashboard = ({ onBack }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#243949] to-[#517fa4] p-4">
        <button
-                onClick={onBack}
-                className="fixed top-6 left-6 z-50 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95"
-            >
-                <ArrowLeft size={20} className="text-gray-700" />
-            </button> 
+        onClick={onBack}
+        className="mb-6 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95 inline-flex items-center gap-2"
+    >
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
+        <span className="text-sm text-gray-700 sm:hidden">Back</span>
+    </button>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="backdrop-blur-md bg-white/10 rounded-3xl p-6 mb-6 border border-white/20 shadow-2xl">

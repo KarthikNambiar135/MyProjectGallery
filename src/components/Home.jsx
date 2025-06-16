@@ -14,6 +14,8 @@ function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if(!isMobile){
     const handleMouseMove = (e) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
@@ -23,6 +25,7 @@ function Home() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+    }
   }, []);
 
   return (
@@ -30,7 +33,7 @@ function Home() {
       id="home" 
       className="min-h-screen relative overflow-hidden"
       style={{
-        background: `
+        background: window.innerWidth >= 768 ? `
           radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
             rgba(139, 92, 246, 0.3) 0%, 
             rgba(59, 130, 246, 0.2) 25%, 
@@ -42,7 +45,14 @@ function Home() {
             #2d1b69 50%, 
             #1e3a8a 75%, 
             #1f2937 100%)
-        `
+        ` : `
+    linear-gradient(135deg, 
+      #0f0f23 0%, 
+      #1a1a3e 25%, 
+      #2d1b69 50%, 
+      #1e3a8a 75%, 
+      #1f2937 100%)
+  `
       }}
     >
       {/* Animated Background Elements */}
@@ -102,14 +112,14 @@ function Home() {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-8">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-8">
+        <div className="text-center max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto">
           {/* Glassmorphism Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl"
+            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl"
           >
             {/* Icon with Sparkles */}
             <motion.div
@@ -119,7 +129,7 @@ function Home() {
               className="relative inline-block mb-8"
             >
               <div className="relative">
-                <Code size={64} className="text-white mb-4 mx-auto" />
+                <Code className="w-12 h-12 sm:w-16 sm:h-16 text-white mb-4 mx-auto"/>
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -135,9 +145,18 @@ function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
             >
-              Creative Developer
+                 Creative Developer - CodeWith<svg className="inline-block text-white -ml-7 sm:-ml-3 md:-ml-4 lg:-ml-15 mb-3 sm:mb-2 md:mb-3 lg:mb-4" style={{ width: '1.5em sm:2em md:2.2em lg:2.5em', height: '0.8em sm:1em md:1.1em lg:1.2em' }} viewBox="0 0 24 24">
+                <g stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  {/* Forward slash */}
+                  <line x1="16" y1="4" x2="8" y2="20" />
+                  {/* Less-than symbol - upper line */}
+                  <line x1="25" y1="10" x2="12" y2="13" />
+                  {/* Less-than symbol - lower line */}
+                  <line x1="12" y1="13" x2="25" y2="16" />
+                </g>
+              </svg>
             </motion.h1>
 
             {/* Subtitle */}
@@ -145,7 +164,7 @@ function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-white/80 mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0"
             >
               Building beautiful digital experiences,{' '}
               <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text font-semibold">
@@ -160,7 +179,7 @@ function Home() {
               transition={{ delay: 0.9 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Explore My Work
