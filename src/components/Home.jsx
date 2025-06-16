@@ -147,7 +147,7 @@ function Home() {
               transition={{ delay: 0.5 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
             >
-                 Creative Developer - CodeWith<svg className="inline-block text-white -ml-7 sm:-ml-3 md:-ml-4 lg:-ml-15 mb-3 sm:mb-2 md:mb-3 lg:mb-4" style={{ width: '1.5em sm:2em md:2.2em lg:2.5em', height: '0.8em sm:1em md:1.1em lg:1.2em' }} viewBox="0 0 24 24">
+                 Creative Developer - CodeWith<svg className="inline-block text-white -ml-7 sm:-ml-3 md:-ml-4 lg:-ml-15 mb-3 sm:mb-2 md:mb-3 lg:mb-4" style={{ width: '2em', height: '1em' }} viewBox="0 0 24 24">
                 <g stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   {/* Forward slash */}
                   <line x1="16" y1="4" x2="8" y2="20" />
