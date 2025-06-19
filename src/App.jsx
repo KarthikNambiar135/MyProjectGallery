@@ -37,7 +37,7 @@ function App() {
     if (currentPage === "weather-app") return <Weather onBack={handleBack} />;
     if (currentPage === "todolist") return <ToDoList onBack={handleBack} />;
     if (currentPage === "code-editor") return <MiniCodeEditor onBack={handleBack} />;
-    if (currentPage === "calculator") return <Calculator />
+    if (currentPage === "calculator") return <Calculator onBack={handleBack}/>
     if (currentPage === "home") return (
       <>
         <NavBar />

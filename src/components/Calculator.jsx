@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import {ArrowLeft} from 'lucide-react';
 
-const Calculator = () => {
+const Calculator = ({onBack}) => {
   const [display, setDisplay] = useState('0');
   const [previousValue, setPreviousValue] = useState(null);
   const [operation, setOperation] = useState(null);
@@ -259,6 +260,13 @@ const Calculator = () => {
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${currentTheme.bg} flex items-center justify-center p-4 relative`}>
+        <button
+        onClick={onBack}
+        className="mb-6 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95 inline-flex items-center gap-2"
+    >
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
+        <span className="text-sm text-gray-700 sm:hidden">Back</span>
+    </button>
       {/* Three.js Background */}
       <div ref={mountRef} className="fixed inset-0 -z-10" />
       
