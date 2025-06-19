@@ -21,7 +21,7 @@ function Projects({ handleSwitch }) {
       id: 'todolist',
       title: 'Smart Todo List',
       description: 'A beautifully designed task management app with progress tracking and smooth animations.',
-      tech: ['React', 'Framer Motion', 'LocalStorage'],
+      tech: ['ReactJS', 'TailwindCSS', 'Framer Motion', 'LocalStorage'],
       color: 'from-purple-500 to-pink-500',
       icon: '✅',
       status: 'Live',
@@ -41,7 +41,7 @@ function Projects({ handleSwitch }) {
       id: 'portfolio-site',
       title: 'Interactive Portfolio',
       description: 'This very website showcasing advanced animations and modern design principles.',
-      tech: ['React', 'Glassmorphism', 'Animations'],
+      tech: ['ReactJS', 'Glassmorphism & Animations using TailwindCSS'],
       color: 'from-emerald-500 to-teal-500',
       icon: '🎨',
       status: 'Live',
@@ -76,6 +76,16 @@ function Projects({ handleSwitch }) {
       icon: '💬',
       status: 'Coming Soon',
       category: 'Social'
+    },
+    {
+      id: 'calculator',
+      title: 'K-alculator',
+      description: 'Complete UI Overhaul for our traditonal (K)Calculator.',
+      tech: ['TalwindCSS', 'React'],
+      color: 'from-pink-500 to-rose-500',
+      icon: '🧮',
+      status: 'Live',
+      category: 'Utility'
     }
   ];
 
