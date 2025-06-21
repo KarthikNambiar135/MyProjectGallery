@@ -59,7 +59,8 @@ export default function Calculator({onBack}) {
         .replace(/cos\(/g, 'Math.cos(')
         .replace(/tan\(/g, 'Math.tan(')
         .replace(/log\(/g, 'Math.log10(')
-        .replace(/√/g, 'Math.sqrt');
+        .replace(/√/g, 'Math.sqrt')
+        .replace(/(\d+(\.\d+)?)\s*\^\s*(\d+(\.\d+)?)/g, 'Math.pow($1, $3)');
       const evaluated = Function('return ' + replaced)();
       if (isNaN(evaluated) || !isFinite(evaluated)) throw new Error('Invalid');
       return evaluated;
@@ -95,6 +96,13 @@ export default function Calculator({onBack}) {
       }
       const newExpr = expression.slice(0, cursorPos - 1) + expression.slice(cursorPos);
       setExpression(newExpr);
+      setTimeout(() => {
+        if (input) {
+          const newCursor = cursorPos - 1;
+          input.selectionStart = input.selectionEnd = newCursor >= 0 ? newCursor : 0;
+          input.focus();
+        }
+      }, 0);
       if (newExpr.trim() === '') setResult('');
     } else {
       if (finalized) {
