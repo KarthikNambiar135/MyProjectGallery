@@ -79,11 +79,11 @@ function Projects({ handleSwitch }) {
     },
     {
       id: 'calculator',
-      title: 'K-alculator',
-      description: 'Complete UI Overhaul for our traditonal (K)Calculator.',
-      tech: ['TalwindCSS', 'React'],
-      color: 'from-pink-500 to-rose-500',
-      icon: '🧮',
+      title: 'K(c)alculator',
+      description: 'Sleek dual-mode calculator with dynamic results, keyboard support, and expression editing.',
+      tech: ['TalwindCSS', 'ReactJS', 'Framer-motion'],
+      color: 'from-purple-500 to-pink-500',
+      icon: '🔢',
       status: 'Live',
       category: 'Utility'
     }
