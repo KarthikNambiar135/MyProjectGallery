@@ -32,7 +32,7 @@ const themes = {
     display: 'bg-white text-black border-black/20',
     expression: 'text-gray-600',
     button: 'bg-black/10 hover:bg-black/20 text-black border-black/10',
-    control: 'hover:bg-black/20 text-black'
+    control: 'hover:bg-black/20 text-black border-none'
   }
 };
 
@@ -42,6 +42,7 @@ export default function Calculator({onBack}) {
   const [finalized, setFinalized] = useState(false);
   const [mode, setMode] = useState('basic');
   const [theme, setTheme] = useState('dark');
+  const [errorShake, setErrorShake] = useState(false);
   const inputRef = useRef(null);
 
   const isScientific = mode === 'scientific';
@@ -60,9 +61,10 @@ export default function Calculator({onBack}) {
         .replace(/log\(/g, 'Math.log10(')
         .replace(/√/g, 'Math.sqrt');
       const evaluated = Function('return ' + replaced)();
+      if (isNaN(evaluated) || !isFinite(evaluated)) throw new Error('Invalid');
       return evaluated;
     } catch {
-      return '';
+      return 'Error';
     }
   };
 
@@ -72,6 +74,11 @@ export default function Calculator({onBack}) {
 
     if (value === '=') {
       const res = evaluateExpression(expression);
+      if (res === 'Error') {
+        setErrorShake(true);
+        setTimeout(() => setErrorShake(false), 400);
+        return;
+      }
       setExpression(res.toString());
       setResult('');
       setFinalized(true);
@@ -92,6 +99,7 @@ export default function Calculator({onBack}) {
     } else {
       if (finalized) {
         const res = evaluateExpression(expression);
+        if (res === 'Error') return;
         const newExpr = res.toString() + value;
         setExpression(newExpr);
         setResult('');
@@ -148,7 +156,7 @@ export default function Calculator({onBack}) {
   useEffect(() => {
     if (!finalized && expression.trim() !== '') {
       const live = evaluateExpression(expression);
-      if (live !== '') setResult(live);
+      if (live !== 'Error') setResult(live);
       else setResult('');
     } else if (expression.trim() === '') {
       setResult('');
@@ -170,10 +178,21 @@ export default function Calculator({onBack}) {
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`rounded-2xl shadow-xl p-6 w-full max-w-sm sm:max-w-md backdrop-blur border ${currentTheme.card}`}
+        className={`rounded-2xl shadow-xl p-6 w-full max-w-sm sm:max-w-md backdrop-blur border ${currentTheme.card} ${errorShake ? 'animate-[shake_0.4s_ease-in-out]' : ''}`}
+        style={{ animationName: errorShake ? 'shake' : 'none' }}
       >
+        <style>
+          {`
+            @keyframes shake {
+              0%, 100% { transform: translateX(0); }
+              20%, 60% { transform: translateX(-4px); }
+              40%, 80% { transform: translateX(4px); }
+            }
+          `}
+        </style>
+
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">K(c)alculator</h2>
+          <h2 className="text-xl font-semibold">K(C)alculator</h2>
           <div className="flex gap-2">
             <button onClick={toggleMode} className={`text-sm px-2 py-1 rounded transition ${currentTheme.control}`}>{mode}</button>
             <button onClick={toggleTheme} className={`text-sm px-2 py-1 rounded transition ${currentTheme.control}`}>{theme}</button>
